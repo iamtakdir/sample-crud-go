@@ -15,6 +15,6 @@ func main() {
 	router.HandleFunc("/books", handellers.AddBook).Methods(http.MethodPost)
 	router.HandleFunc("/books/{id}", handellers.GetBook).Methods(http.MethodGet)
 	router.HandleFunc("/books/{id}", handellers.UpdateBook).Methods(http.MethodPut)
-	http.ListenAndServe(":4000", router)
+	http.ListenAndServe("localhost:4000", router)
 
 }
