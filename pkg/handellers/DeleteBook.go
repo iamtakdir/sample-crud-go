@@ -10,7 +10,7 @@ import (
 )
 
 func (h handler) DeleteBook(w http.ResponseWriter, r *http.Request) {
-
+	//get the unique id from url
 	vars := mux.Vars(r)
 
 	id, _ := strconv.Atoi(vars["id"])

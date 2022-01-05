@@ -15,6 +15,8 @@ func main() {
 
 	router := mux.NewRouter()
 
+	//Routes
+
 	router.HandleFunc("/books", h.GetAllBooks).Methods(http.MethodGet)
 	router.HandleFunc("/books", h.AddBook).Methods(http.MethodPost)
 	router.HandleFunc("/books/{id}", h.GetBook).Methods(http.MethodGet)

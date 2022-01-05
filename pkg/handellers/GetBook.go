@@ -11,18 +11,18 @@ import (
 
 func (h handler) GetBook(w http.ResponseWriter, r *http.Request) {
 
+	//Read unique id from url
+
 	vars := mux.Vars(r)
 
 	id, _ := strconv.Atoi(vars["id"])
 
 	var book models.Book
-	// find a book by id
+	// find a book by id and return it.
 	if result := h.DB.Find(&book, id); result.Error != nil {
 		fmt.Println(result.Error)
 	}
-
-	//Delete that book
-
+	
 	//encode json
 	w.Header().Add("Content-type", "application/json")
 	w.WriteHeader(http.StatusOK)

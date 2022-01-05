@@ -10,17 +10,20 @@ import (
 )
 
 func (h handler) AddBook(w http.ResponseWriter, r *http.Request) {
+
+	// read data from body
 	body, err := ioutil.ReadAll(r.Body)
 
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer r.Body.Close()
 
 	var book models.Book
-	//read the request body
-	defer r.Body.Close()
-	json.Unmarshal(body, &book)
+	// unmarshal data and bind it with book
 
+	json.Unmarshal(body, &book)
+	//Create data 
 	if result := h.DB.Create(&book); result.Error != nil {
 		fmt.Println(result.Error)
 	}

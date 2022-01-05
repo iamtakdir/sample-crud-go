@@ -9,13 +9,13 @@ import (
 
 func (h handler) GetAllBooks(w http.ResponseWriter, r *http.Request) {
 
+	//make a Book model array and return all data
 	var book []models.Book
 
 	if result := h.DB.Find(&book); result.Error != nil {
 		fmt.Println(result.Error)
 	}
-	
-	fmt.Println(book)
+
 	w.Header().Add("Content-type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(book)
